@@ -1,4 +1,4 @@
-﻿// index.js
+// index.js
 
 var REST_DATA = 'api/db';
 var KEY_ENTER = 13;
@@ -12,7 +12,7 @@ function loadItems() {
         // Make sure the received items have correct format
         for (i = 0; i < receivedItems.length; ++i) {
             var item = receivedItems[i].doc;
-            if (item && '_id' in item && 'text' in item) {
+            if (item && '_id' in item && 'mark' in item) {
                 items.push(item);
             }
         }
@@ -40,7 +40,7 @@ function addItem(item, isNew) {
     table.lastChild.appendChild(row);
     var textarea = row.firstChild.firstChild;
     if (item) {
-        textarea.value = item.text;
+        textarea.value = item.mark;
     }
     row.isNew = !item || isNew;
     textarea.focus();
@@ -76,7 +76,7 @@ function saveChange(contentNode, callback) {
     var data = {
         id: id,
         rev: rev,
-        text: contentNode.value
+        mark: contentNode.value
     };
     if (row.isNew) {
         delete row.isNew;
