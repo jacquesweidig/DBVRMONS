@@ -12,10 +12,10 @@ namespace CloudantDotNet.Services
         //Task<string> UpdateAsync(ToDoItem item);
 
 
-        Task<dynamic> CreateAsync(VREntryItem item);
-        Task<dynamic> DeleteAsync(VREntryItem item);
+        Task<dynamic> CreateAsync(Vote item);
+        Task<dynamic> DeleteAsync(Vote item);
         Task<dynamic> GetAllAsync();
         Task PopulateTestData();
-        Task<string> UpdateAsync(VREntryItem item);
+        Task<string> UpdateAsync(Vote item);
     }
 }

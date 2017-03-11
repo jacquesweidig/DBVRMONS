@@ -16,7 +16,7 @@ namespace CloudantDotNet.Controllers
         }
 
         [HttpPost]
-        public async Task<dynamic> Create(VREntryItem item)
+        public async Task<dynamic> Create(Vote item)
         {
             return await _cloudantService.CreateAsync(item);
         }
@@ -28,13 +28,13 @@ namespace CloudantDotNet.Controllers
         }
 
         [HttpPut]
-        public async Task<string> Update(VREntryItem item)
+        public async Task<string> Update(Vote item)
         {
             return await _cloudantService.UpdateAsync(item);
         }
 
         [HttpDelete]
-        public async Task<dynamic> Delete(VREntryItem item)
+        public async Task<dynamic> Delete(Vote item)
         {
             return await _cloudantService.DeleteAsync(item);
         }
