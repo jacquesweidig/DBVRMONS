@@ -1,41 +1,29 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <title>ASP.NET Core Cloudant Starter Application</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport"
-          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <link rel="stylesheet" href="~/css/style.css" />
-</head>
-<body>
-    <div class="leftHalf">
-        <img class="newappIcon" src="~/images/newapp-icon.png" />
-        <h1>
-            Welcome to the <span class="blue">ASP.NET Cloudant Web Starter</span> on Bluemix!
-        </h1>
-    </div>
-    <div class="rightHalf">
-        <div class="center">
-            <header>
-                <div class='title'>
-                    ASP.NET Cloudant Web Starter
-                </div>
-            </header>
-            <table id='notes' class='records'><tbody></tbody></table>
-            <div id="loading">&nbsp;&nbsp;Please wait while the database is being initialized ...</div>
-            <footer>
-                <div class='tips'>
-                    Click the Add button to add a record.
-                    <button class='addBtn' onclick="addItem()" title='add record'>
-                        <img src='~/images/add.png' alt='add' />
-                    </button>
-                </div>
-            </footer>
-            <script type="text/javascript" src="~/scripts/util.js"></script>
-            <script type="text/javascript" src="~/scripts/index.js"></script>
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
-        </div>
-    </div>
-</body>
-</html>
+<h1>Projet 1</h1>
+
+<table>
+    <th style="text-align : center">Cas 1</th>
+    <th style="text-align : center">Cas 2</th>
+    <th style="text-align : center">Cas 3</th>
+    <th style="text-align : center">Cas 4</th>
+    <tr>
+        <td><a href="~/Home/AfficherCas/case0"><img class="imgProjet" src="~/Content/image/maison1.jpg" style="margin-right:20px;background-size: cover; width: 250px; height: 200px;"/></a></td>
+        <td><a href="~/Home/AfficherCas/case1"><img class="imgProjet" src="~/Content/image/maison2.jpg" style="margin-right:20px;background-size: cover; width: 250px; height: 200px;"/></a></td>
+        <td><a href="~/Home/AfficherCas/case2"><img class="imgProjet" src="~/Content/image/maison3.jpg" style="margin-right:20px;background-size: cover; width: 250px; height: 200px;"/></a></td>
+        <td><a href="~/Home/AfficherCas/case3"><img class="imgProjet" src="~/Content/image/maison4.jpg" style="margin-right:20px;background-size: cover; width: 250px; height: 200px;"/></a></td>
+    <tr>
+        @for (int i = 0; i < ViewBag.coteGeneral.Length; i++)
+        {
+            <td style="text-align:center">@ViewBag.coteGeneral[i] / 10</td>
+        }
+    </tr>
+   
+</table>
+
+<div><canvas id="canvasID" onload="init(@ViewBag.tabCote)"></canvas></div>
+   
+
+

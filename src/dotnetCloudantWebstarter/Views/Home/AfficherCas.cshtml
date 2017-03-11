@@ -1,0 +1,21 @@
+﻿@model List<hackaton.Models.Vote>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<a href=javascript:history.go(-1)><input type="button" value="Retour" /></a>
+<input type="button" onclick="" value="Trier"/>
+
+<table>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>Vote n° @item.id </td>
+            <td>Cote : @item.note</td>
+            
+        </tr>
+        <tr>
+            <td><blockquote>@item.vocal</blockquote></td>
+        </tr>
+    }
+</table>
