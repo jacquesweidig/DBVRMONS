@@ -34,19 +34,12 @@ namespace CloudantDotNet.Models
                 votesMap.Add(caseName, list);
             }
 
-            /*
-            {
-                new Vote {id = 1,note = 3, vocal ="blabla" },
-                new Vote {id = 2,note = 3, vocal ="blabla" },
-                new Vote {id = 3,note = 3, vocal ="blabla" },
-                new Vote {id = 4,note = 3, vocal ="blabla" },
-            };*/
         }
 
         public List<Vote> DisplayListe(string caseName)
         {
             return votesMap[caseName];
-            //return listeVote;
+
         }
     }
 }

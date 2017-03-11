@@ -21,14 +21,14 @@ namespace CloudantDotNet.Services
             _urlEncoder = urlEncoder;
         }
 
-        public async Task<dynamic> CreateAsync(VREntryItem item)
+        public async Task<dynamic> CreateAsync(Vote item)
         {
             using (var client = CloudantClient())
             {
                 var response = await client.PostAsJsonAsync(_dbName, item);
                 if (response.IsSuccessStatusCode)
                 {
-                    var responseJson = await response.Content.ReadAsAsync<VREntryItem>();
+                    var responseJson = await response.Content.ReadAsAsync<Vote>();
                     return JsonConvert.SerializeObject(new { id = responseJson.id, rev = responseJson.rev });
                 }
                 string msg = "Failure to POST. Status Code: " + response.StatusCode + ". Reason: " + response.ReasonPhrase;
@@ -37,14 +37,14 @@ namespace CloudantDotNet.Services
             }
         }
 
-        public async Task<dynamic> DeleteAsync(VREntryItem item)
+        public async Task<dynamic> DeleteAsync(Vote item)
         {
             using (var client = CloudantClient())
             {
                 var response = await client.DeleteAsync(_dbName + "/" + _urlEncoder.Encode(item.id) + "?rev=" + _urlEncoder.Encode(item.rev));
                 if (response.IsSuccessStatusCode)
                 {
-                    var responseJson = await response.Content.ReadAsAsync<VREntryItem>();
+                    var responseJson = await response.Content.ReadAsAsync<Vote>();
                     return JsonConvert.SerializeObject(new { id = responseJson.id, rev = responseJson.rev });
                 }
                 string msg = "Failure to DELETE. Status Code: " + response.StatusCode + ". Reason: " + response.ReasonPhrase;
@@ -68,14 +68,14 @@ namespace CloudantDotNet.Services
             }
         }
 
-        public async Task<string> UpdateAsync(VREntryItem item)
+        public async Task<string> UpdateAsync(Vote item)
         {
             using (var client = CloudantClient())
             {
                 var response = await client.PutAsJsonAsync(_dbName + "/" + _urlEncoder.Encode(item.id) + "?rev=" + _urlEncoder.Encode(item.rev), item);
                 if (response.IsSuccessStatusCode)
                 {
-                    var responseJson = await response.Content.ReadAsAsync<VREntryItem>();
+                    var responseJson = await response.Content.ReadAsAsync<Vote>();
                     return JsonConvert.SerializeObject(new { id = responseJson.id, rev = responseJson.rev });
                 }
                 string msg = "Failure to PUT. Status Code: " + response.StatusCode + ". Reason: " + response.ReasonPhrase;
@@ -95,9 +95,9 @@ namespace CloudantDotNet.Services
                     response = await client.PutAsync(_dbName, null);
                     if (response.IsSuccessStatusCode)
                     {
-                        Task t1 = CreateAsync(JsonConvert.DeserializeObject<VREntryItem>("{ 'text': 'Sample 1' }"));
-                        Task t2 = CreateAsync(JsonConvert.DeserializeObject<VREntryItem>("{ 'text': 'Sample 2' }"));
-                        Task t3 = CreateAsync(JsonConvert.DeserializeObject<VREntryItem>("{ 'text': 'Sample 3' }"));
+                        Task t1 = CreateAsync(JsonConvert.DeserializeObject<Vote>("{ 'text': 'Sample 1' }"));
+                        Task t2 = CreateAsync(JsonConvert.DeserializeObject<Vote>("{ 'text': 'Sample 2' }"));
+                        Task t3 = CreateAsync(JsonConvert.DeserializeObject<Vote>("{ 'text': 'Sample 3' }"));
                         await Task.WhenAll(t1, t2, t3);
                     }
                     else

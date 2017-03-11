@@ -6,7 +6,7 @@ namespace CloudantDotNet.Controllers
     {
         
         // GET: Home
-        public ActionResult Index()
+        public IActionResult Index()
         {
             int[] tabCote = new int[4];
             ListVote liste = new ListVote();
@@ -28,7 +28,7 @@ namespace CloudantDotNet.Controllers
             return View();
         }
 
-        public ActionResult AfficherCas(string id)
+        public IActionResult AfficherCas(string id)
         {
             ListVote liste = new ListVote();
             List<Vote> votes = liste.DisplayListe(id);
